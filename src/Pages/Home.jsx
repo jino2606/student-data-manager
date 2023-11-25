@@ -77,7 +77,7 @@ function Home() {
                             </ul>
                 </div>
                 <div className="col-md-1 d-flex flex-column align-items-center">
-                  <Link to={''} className="btn btn-warning my-1">
+                  <Link to={'/student-detais'} className="btn btn-warning my-1">
                     <i className='fa fa-eye'></i>
                   </Link>
 

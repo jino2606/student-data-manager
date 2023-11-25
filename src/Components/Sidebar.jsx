@@ -124,8 +124,8 @@ function Sidebar({ children }) {
 
 	const routeMapping = {
 		'Home': '/home',
-		'Add Students': '/groups',
-		'Group Management': '/addstudent',
+		'Add Students': '/addstudent',
+		'Group Management': '/groups',
 		};
 
   return (
