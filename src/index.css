@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Alegreya Sans', sans-serif; */
+    font-family: 'Exo 2', sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Lato&family=Nunito&family=Nunito+Sans&family=Roboto:ital,wght@0,300;0,700;1,700&family=Ubuntu:wght@300&display=swap');
+  body{
+    font-family: 'Ubuntu', sans-serif !important;
+   
+  }
+  .contact-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
