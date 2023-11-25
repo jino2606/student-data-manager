@@ -1,6 +1,6 @@
 :root {
     --primary-dark-blue: #1B2435ff;
-    --secondary-dark-blue: #273145ff;
+    --secondary-dark-blue: rgb(107, 135, 190);
 
     --logoColor:#6366F1;
 
@@ -12,6 +12,8 @@
 
     --primary-text: #344767ff;
     --secondary-text: #67748Eff;
+
+    --white: rgb(245, 245, 245);
 
     /* CSS HSL */
     --pink: hsla(329, 94%, 53%, 1);
@@ -41,5 +43,5 @@ a{
 }
 
 body{
-    background-color: #F0F0F1ff !important;
+    background-color: var( --white) !important;
 }

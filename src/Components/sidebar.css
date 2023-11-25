@@ -1,0 +1,41 @@
+/* for the main side bar div */
+.drawerPaper {
+  background-color: var(--primary-dark-blue) !important;
+
+}
+
+/* sidebar's header */
+.drawer_header{
+
+  justify-content: space-between !important;
+  padding: 0 20px !important;
+  margin: 10px 0;
+
+}
+
+/* Side bar Divider Line */
+.MuiDivider-root {
+  background: var(--secondary-dark-blue) !important;
+}
+
+/* Custom Drawer Text color */
+.dwawer_text{
+  color: var(--secondary-text) !important;
+}
+
+/* Side  bar Icons */
+.MuiListItemIcon-root svg path {
+  color: var(--secondary-text) !important;
+}
+
+.MuiListItemIcon-root svg {
+  font-size: 28px !important;
+  border-radius: 5px ;
+  padding: 3px;
+}
+
+/* Side  bar Icons Text */
+.MuiListItemText-root span{
+  color: var(--secondary-text)!important;
+}
+
