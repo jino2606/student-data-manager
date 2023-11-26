@@ -1,0 +1,6 @@
+@import url("./globalstyles.css");
+
+.pink-violet-button{
+    background: var(--gradient-color) !important;
+    color: white !important;
+}
