@@ -144,13 +144,16 @@ function Sidebar({ children }) {
 				</AppBar>
 
 				<DrawerHeader className='drawer_header'>
-					<Box>
-						<Logo style={{width:'2.3rem'}} />  {' '}
-						<Typography 
-						sx={{ display: open ? 'inline-block' : 'none', fontSize:'1.3em', color:'white' }}>
-							APPNAME 
-						</Typography>
-					</Box>
+					<Link to={'/'}>
+						<Box>
+							<Logo style={{width:'2.3rem'}} />  {' '}
+							<Typography 
+							sx={{ display: open ? 'inline-block' : 'none', fontSize:'1.3em', color:'white' }}>
+								APPNAME 
+							</Typography>
+						</Box>
+					</Link>
+
 					<IconButton onClick={handleDrawerClose} sx={{ display: open ? 'flex' : 'none'}} >
 						<ChevronLeftIcon className='style' />
 					</IconButton>
