@@ -27,7 +27,6 @@
     --slate-gray: hsla(220, 16%, 48%, 1);
 
     --gradient-color: linear-gradient(45deg, #F8178Dff, #8025C6ff);
-
 }
 
 * {
@@ -47,4 +46,16 @@ a{
 
 body{
     background-color: var( --white) !important;
+}
+
+.hoverEffects{
+    cursor: pointer;
+}
+
+.hoverEffects:hover{
+    background-color: #f1f1f1 !important;
+}
+
+.hoverEffects:active{
+    background-color: #dfdede !important;
 }

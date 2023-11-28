@@ -4,9 +4,16 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
+import { useLocation } from 'react-router-dom';
 
 
 function AddStudent() {
+
+  // using the useLocation hook to access the current location, including the state
+  const location = useLocation();
+  const updateData = location.state?.data;
+
+
   return (
      <>
         <div className='d-flex justify-content-center align-items-center flex-column mt-5'>
@@ -32,9 +39,7 @@ function AddStudent() {
         <Form.Label>Student Name</Form.Label>
 
           <Form.Control style={{width:'500px'}} placeholder="First name" />
-    
-        
-   
+
           <Form.Label>RollNo</Form.Label>
           <Form.Control type="text" placeholder="Enter the RollNo" />
 
@@ -64,7 +69,7 @@ function AddStudent() {
           <Form.Label>City</Form.Label>
           <Form.Control placeholder="Enter the City Name"/>
 
-          <Form.Label>State</Form.Label>
+          <Form.Label >State</Form.Label>
           <Form.Control placeholder="Enter the State Name"/>
 
         

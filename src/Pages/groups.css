@@ -1,0 +1,10 @@
+.delete_button{
+    
+}
+
+.delete_button:active {
+
+    color: #a12834 !important;
+    scale: 1.2;
+
+}
