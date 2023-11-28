@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '../logo.svg';
 
 function Footer() {
   return (
-    <div className='d-flex justify-content-center align-items-center w-100 flex-column mt-5 footer'>
+   <div className='d-flex justify-content-center align-items-center w-100 flex-column mt-5 footer'>
       <div className="d-flex justify-content-evenly align-items-top w-100 mt-5">
         <div className="websites" style={{width:'400px'}}>
           <h4 className='mb-3 text-white'>
@@ -29,7 +29,7 @@ function Footer() {
           <Link to={'https://react-bootstrap.netlify.app/'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>REACT-BOOTSTRAP</Link>
           <Link to={'https://bootswatch.com/'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>BOOTSWATCHES</Link>  
 
-        </div>
+        </div> 
         <div className="contact">
           <h4 className='mb-3 text-white'>Contact Us</h4>
           <div className='d-flex'>
