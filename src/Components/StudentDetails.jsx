@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { getAStudents } from '../services/allApi';
+import { useEffect } from 'react';
 
 function StudentDetails() {
+
+  const {id} = useParams()
+
+  
+  const [ Student, setStudents] = useState({});
+
+  const getUploadedStudent = async () => {
+    const { data } = await getAStudents(id);
+    setStudents(data);
+  };
+
+  useEffect(() => {
+    getUploadedStudent();
+  });
+
   return (
     <>
       <div className='main'>
@@ -13,7 +31,7 @@ function StudentDetails() {
         <table className='table'>
           <thead>
             <tr>
-              <th>Student Name</th>
+              <th>Name</th>
               <th>RollNo</th>
               <th>Group/Class</th>
               <th>Gender</th>
@@ -28,16 +46,16 @@ function StudentDetails() {
 
           <tbody>
             <tr>
-              <td>ali</td>
-              <td>12</td>
-              <td>10Th</td>
-              <td>male</td>
-              <td>al7@gmail.com</td>
-              <td>wedw</td>
-              <td>9582467142</td>
-              <td>kottakkal</td>
-              <td>kerala</td>
-              <td>klari</td>
+              <td>{Student.name}</td>
+          <td>{Student.rollno}</td>
+          <td>{Student.group}</td>
+          <td>{Student.gender}</td>
+          <td>{Student.email}</td>
+          <td>{Student.address}</td>
+          <td>{Student.phonenumber}</td>
+          <td>{Student.city}</td>
+          <td>{Student.state}</td>
+          <td>{Student.city}</td>
             </tr>
           </tbody>
         </table>
