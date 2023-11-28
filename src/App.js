@@ -15,7 +15,7 @@ function App() {
         <Route path='/home' element={<Sidebar> <Home/></Sidebar>}/>
         <Route path='/groups' element={<Sidebar> <Groups/> </Sidebar>}/>
         <Route path='/addstudent' element={<Sidebar> <AddStudent/> </Sidebar>}/>
-        <Route path='/student-detais' element={<Sidebar> <StudentDetails/> </Sidebar>}/>
+        <Route path='/student-detais/:id' element={<Sidebar> <StudentDetails/> </Sidebar>}/>
       </Routes>
     </div>
   );
