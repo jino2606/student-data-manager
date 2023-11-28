@@ -13,3 +13,8 @@ export const getAllStudents = async ()=>{
 export const getAStudents = async (id)=>{
     return await commonAPI("GET",`${serverURL}/studentData/${id}`,"")
 }
+//api to addstudent datas
+
+ export const  uploadAllData =async(reqBody)=>{
+  return  await commonAPI('POST',`${serverURL}/studentData`,reqBody)
+}

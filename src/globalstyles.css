@@ -1,6 +1,9 @@
 :root {
     --primary-dark-blue: #1B2435ff;
-    --secondary-dark-blue: rgb(107, 135, 190);
+    --secondary-dark-blue: rgb(52, 65, 87);
+
+
+    /* --secondary-dark-blue: rgb(107, 135, 190); */
 
     --logoColor:#6366F1;
 
