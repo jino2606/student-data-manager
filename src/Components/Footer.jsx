@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../logo.svg';
+import { Col, Row } from 'react-bootstrap';
 
 function Footer() {
   return (
    <div className='d-flex justify-content-center align-items-center w-100 flex-column mt-5 footer'>
-      <div className="d-flex justify-content-evenly align-items-top w-100 mt-5">
-        <div className="websites" style={{width:'400px'}}>
+      <Row className="d-flex justify-content-evenly align-items-top w-100 mt-5">
+        <Col className="websites" style={{width:'400px'}}>
           <h4 className='mb-3 text-white'>
             <Logo className='me-3' style={{width:'2.8rem'}} />  {' '}
             APPNAME
@@ -14,23 +15,23 @@ function Footer() {
           <h6 className='footerfont'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident tempore tempor.
           </h6>
-        </div>
+        </Col>
         
-        <div className="links d-flex flex-column">
+        <Col className="links d-flex flex-column">
           <h4 className='mb-3 text-white'>Links</h4>   
           <Link to={'/'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6' >Landing Page</Link>
           <Link to={'/home'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>Home Page</Link>
           <Link to={'/addstudent'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>Add Student</Link>  
-        </div>
+        </Col>
 
-        <div className="guides d-flex flex-column">
+        <Col className="guides d-flex flex-column">
           <h4 className='mb-3 text-white'>Guides</h4>
           <Link to={'https://react.dev/'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>REACT</Link>
           <Link to={'https://react-bootstrap.netlify.app/'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>REACT-BOOTSTRAP</Link>
           <Link to={'https://bootswatch.com/'} style={{textDecoration:'none', color:'white'}} className='footerfont fs-6'>BOOTSWATCHES</Link>  
+        </Col> 
 
-        </div> 
-        <div className="contact">
+        <Col className="contact">
           <h4 className='mb-3 text-white'>Contact Us</h4>
           <div className='d-flex'>
             <input type="text" className='form-control' placeholder='Enter your Email'/>
@@ -44,8 +45,8 @@ function Footer() {
             <Link to={'https://react.dev/'} style={{textDecoration:'none', color:'white'}} target='_blank'><i class="fa-solid fa-comment fa-2x footerfont"></i></Link>
           </div>
 
-        </div>
-      </div>
+        </Col>
+      </Row>
       <p className='mt-3 text-white' style={{fontSize:'.8em'}}>© 2023, Student Manager APP. CRUD APP. Built with REACT</p>
     </div>
   )

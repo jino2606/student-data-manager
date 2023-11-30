@@ -40,7 +40,6 @@ function Groups() {
   
   const deleteGroup = async(id)=>{
     const response = await deleteGroupData(id)
-    fetchData()
     if(response.status>=200 && response.status<300){
       toast.success(`Group Deleted Successfully`)
     }
@@ -77,12 +76,11 @@ function Groups() {
   return (
 
 <>
-
       <div className='container'>
 
         <CreateGroup setAddCategory={setAddCategory} />
 
-        <div className='mx-5 bg-white shadow-lg rounded-4 mt-4 p-5'>
+        <div className='mx-0 mx-md-5 bg-white shadow-lg rounded-4 mt-4 p-2 p-md-5'>
           <table className='w-100' style={{ borderCollapse: 'separate', borderSpacing: '0 15px', minHeight: '250px' }}>
             <thead className='mb-5'>
               <tr className='my-3'>

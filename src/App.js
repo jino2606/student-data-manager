@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
-        <Route path='/home' element={<Sidebar> <Home/></Sidebar>}/>
-        <Route path='/groups' element={<Sidebar> <Groups/> </Sidebar>}/>
-        <Route path='/addstudent' element={<Sidebar> <AddStudent/> </Sidebar>}/>
-        <Route path='/student-detais/:id' element={<Sidebar> <StudentDetails/> </Sidebar>}/>
+        <Route path='/home' element={<Sidebar component="Home"> <Home/></Sidebar>}/>
+        <Route path='/groups' element={<Sidebar component="Groups"> <Groups/> </Sidebar>}/>
+        <Route path='/addstudent' element={<Sidebar component="Add Student"> <AddStudent /> </Sidebar>}/>
+        <Route path='/student-detais/:id' element={<Sidebar component="View Student"> <StudentDetails/> </Sidebar>}/>
       </Routes>
     </div>
   );

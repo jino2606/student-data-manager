@@ -42,7 +42,7 @@ function CreateGroup({setAddCategory}) {
 
   return (
     <>
-      <div className='d-flex align-items-center justify-content-between mx-5 mt-5'>
+      <div className='d-flex align-items-center justify-content-between mx-0 mx-md-5 mt-5'>
         <h1>Group Management</h1>
         <button onClick={handleShow} style={{fontSize:'15px',}} className="btn btn-success btn-lg" type="button">+ Create Groups</button>
       </div>

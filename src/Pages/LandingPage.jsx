@@ -38,71 +38,53 @@ function LandingPage() {
     <div className='container mt-5 mb-5 d-flex align-items-center justify-content-center flex-column'>
     <h3 style={{fontWeight:'600'}}>Features</h3>
 
-    <div className='cards d-flex align-items-center justify-content-evenly w-100 my-5'>
-        {/* <Card className='p-4' style={{ width: '22rem' }}>
-        <Card.Img variant="top" style={{width:'100%', height:'300px'}} src="https://i.pinimg.com/originals/ad/d2/31/add23123b088c3301cc2c71f7767048d.gif" />
-        <Card.Body>
-            <Card.Title>Managing Videos</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-            </Card.Text>
-        </Card.Body>
-        </Card> */}
+    <Row className='cards d-flex align-items-center justify-content-evenly w-100 my-5'>
 
-        <Card className='border-0 bg-white shadow-sm' style={{ width: '22rem',height:'22rem' }}>
-            <Search style={{width:'100%', height:'55rem'}}/>
+        <Col sm="12" lg="4" className='mb-3 d-flex align-items-center justify-content-center'>
+            <Card className='border-0 bg-white shadow-sm' style={{ width: '22rem',height:'22rem' }}>
+                <Search style={{width:'100%', height:'55rem'}}/>
+                <Card.Body>
+                    <Card.Title className='text-center'>Search Any Data</Card.Title>
+                </Card.Body>
+            </Card>
+        </Col>
+
+        <Col sm="12" lg="4" className='mb-3 d-flex align-items-center justify-content-center'>
+            <Card className='border-0 bg-white shadow-sm' style={{ width: '22rem',height:'22rem' }}>
+             <Group style={{width:'100%', height:'55rem'}}/>
             <Card.Body>
-                <Card.Title className='text-center'>Search Any Data</Card.Title>
-                {/* <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-                </Card.Text> */}
+                <Card.Title className='text-center'>Manage Groups</Card.Title>
             </Card.Body>
-        </Card>
+            </Card>
+        </Col>
 
-        <Card className='border-0 bg-white shadow-sm' style={{ width: '22rem',height:'22rem' }}>
-        {/* <Card.Img variant="top" style={{width:'100%', height:'55rem'}} src="https://i.pinimg.com/originals/48/c6/12/48c61262980bb7dbf2557940d41c7d0b.gif" /> */}
-         <Group style={{width:'100%', height:'55rem'}}/>
-        <Card.Body>
-            <Card.Title className='text-center'>Manage Groups</Card.Title>
-            {/* <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-            </Card.Text> */}
-        </Card.Body>
-        </Card>
+        <Col sm="12" lg="4" className='d-flex align-items-center justify-content-center'>
+            <Card className='border-0 bg-white shadow-sm' style={{ width: '22rem',height:'22rem' }}>
+             <Edit style={{width:'100%', height:'55rem'}}/>
+            <Card.Body>
+                <Card.Title className='text-center'>Modify Data</Card.Title>
+            </Card.Body>
+            </Card>
+        </Col>
 
-        <Card className='border-0 bg-white shadow-sm' style={{ width: '22rem',height:'22rem' }}>
-        {/* <Card.Img variant="top" style={{width:'100%', height:'55rem'}} src="https://i.pinimg.com/originals/48/c6/12/48c61262980bb7dbf2557940d41c7d0b.gif" /> */}
-         <Edit style={{width:'100%', height:'55rem'}}/>
-        <Card.Body>
-            <Card.Title className='text-center'>Modify Data</Card.Title>
-            {/* <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-            </Card.Text> */}
-        </Card.Body>
-        </Card>
+    </Row>
 
     </div>
 
-    </div>
+    <Row className='my-5 shadow-sm rounded bg-white p-5 d-flex align-items-center justify-content-between'>
 
-    <div className='container my-5 shadow-sm rounded bg-white p-5 d-flex align-items-center justify-content-between'>
+        <Col lg="5">
+            <h3 className='mb-5 features' style={{}}>Simple Fast and Easy to Use</h3>
+            <p className='mb-3'><span style={{fontSize:'25px'}}>Search Data :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eveniet et eligendi unde voluptas, iste molestias adipisci.</p>
+            <p className='mb-3'><span style={{fontSize:'25px'}}>Organise Groups :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eveniet et eligendi unde voluptas, iste molestias adipisci.</p>
+            <p className='mb-3'><span style={{fontSize:'25px'}}>Modify Data :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eveniet et eligendi unde voluptas, iste molestias adipisci.</p>
 
-    <div className="col-lg-5">
-        <h3 className='mb-5 features' style={{}}>Simple Fast and Easy to Use</h3>
-        <p className='mb-3'><span style={{fontSize:'25px'}}>Search Data :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eveniet et eligendi unde voluptas, iste molestias adipisci.</p>
-        <p className='mb-3'><span style={{fontSize:'25px'}}>Organise Groups :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eveniet et eligendi unde voluptas, iste molestias adipisci.</p>
-        <p className='mb-3'><span style={{fontSize:'25px'}}>Modify Data :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eveniet et eligendi unde voluptas, iste molestias adipisci.</p>
+        </Col>
+        <Col lg="5">
+            <img width="100%" height="400" src={featureImage}></img>
+        </Col>
 
-    </div>
-    <div className="col-lg-5">
-        <img width="100%" height="400" src={featureImage}></img>
-    </div>
-
-    </div>
+    </Row>
     <Footer/>
     </>
   )

@@ -1,11 +1,6 @@
 import { commonAPI } from "./commonApi";
 import serverURL from "./serverURL";
 
-/*  */
-
-// export const getAllStudents = async()=>{
-//     return await commonAPI('GET',`${serverURL}/studentData`, "")
-// }
 
 export const getStudent = async(id)=>{
     return await commonAPI('GET',`${serverURL}/studentData/${id}`, "")
@@ -29,12 +24,21 @@ export const getAllStudents = async ()=>{
 }
 
 // get
-
 export const getAStudents = async (id)=>{
     return await commonAPI("GET",`${serverURL}/studentData/${id}`,"")
 }
-//api to addstudent datas
 
+//api to addstudent datas
  export const  uploadAllData =async(reqBody)=>{
-  return  await commonAPI('POST',`${serverURL}/studentData`,reqBody)
+  return await commonAPI('POST',`${serverURL}/studentData`,reqBody)
+}
+
+/* api to edit/update student detais */
+export const editAllData = async(reqBody, id)=>{
+    return await commonAPI('PUT',`${serverURL}/studentData/${id}`, reqBody)
+}
+
+/* Api to dele a student */
+export const deleteStudentData = async(id)=>{
+    return await commonAPI('DELETE',`${serverURL}/studentData/${id}`, {})
 }
