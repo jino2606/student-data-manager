@@ -1,0 +1,12 @@
+.contact-search{
+    height: 10em;
+}
+
+.search_list{
+    max-height: 250px;
+    overflow-y: scroll;
+}
+/* 232 */
+.contact-img{
+  object-position: center;
+}

@@ -1,19 +1,56 @@
-import React from 'react'
-import { Button } from '@mui/material';
+import React, { useState } from 'react'
+// import { Button } from '@mui/material';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getAStudents } from '../services/allApi';
+import { useEffect } from 'react';
+import { Col, Row } from 'react-bootstrap';
+import './studentDetails.css'
+import Button from 'react-bootstrap/Button';
 
 function StudentDetails() {
+
+  const {id} = useParams()
+
+  const [ Student, setStudents] = useState({});
+
+  const getUploadedStudent = async () => {
+    const { data } = await getAStudents(id);
+    setStudents(data);
+  };
+
+  useEffect(() => {
+    getUploadedStudent();
+  });
+
+  /* For Navigating to Edit StudentData */
+  const navigate = useNavigate();
+
+  const updateStudentData = (data)=>{
+    
+    // using the navigate function to go to the '/addstudent' route with data as state
+    navigate('/addstudent', { state: { data, isUpdate:true  }});
+
+  }
+
   return (
     <>
-      <div className='main'>
-        <div className="profile d-flex justify-content-center mb-3">
+      <div className='container-md'>
+      <h1 className='text-center my-5'>Student Info</h1>
+        {
+        /* <div className="profile d-flex justify-content-center mb-3">
           <h1>Student Details</h1>
         </div>
-        <div className='d-flex justify-content-center align-items-center  mb-5 '> <img src="data:image/png;base64,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" alt="" /></div>
+        <div className='container d-flex justify-content-center align-items-center mb-5 '>
+          <div style={{width: '300px', height: '300px'}} className='rounded-circle overflow-hidden'>
+            <img className='w-100 h-100' style={{objectFit: 'cover', objectPosition: 'center'}} src={Student.url} alt=""/>
+          </div>
+          <h3>{Student.name}</h3>
+        </div>
 
         <table className='table'>
           <thead>
             <tr>
-              <th>Student Name</th>
+              <th>Name</th>
               <th>RollNo</th>
               <th>Group/Class</th>
               <th>Gender</th>
@@ -28,32 +65,72 @@ function StudentDetails() {
 
           <tbody>
             <tr>
-              <td>ali</td>
-              <td>12</td>
-              <td>10Th</td>
-              <td>male</td>
-              <td>al7@gmail.com</td>
-              <td>wedw</td>
-              <td>9582467142</td>
-              <td>kottakkal</td>
-              <td>kerala</td>
-              <td>klari</td>
+              <td>{Student.name}</td>
+              <td>{Student.rollno}</td>
+              <td>{Student.group}</td>
+              <td>{Student.gender}</td>
+              <td>{Student.email}</td>
+              <td>{Student.address}</td>
+              <td>{Student.phonenumber}</td>
+              <td>{Student.city}</td>
+              <td>{Student.state}</td>
+              <td>{Student.place}</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
 
-        <div className=' justify-content-center align-items-center d-flex '>
-          <Button variant="contained" color="success">
-            ADD
-          </Button>
-          <Button className='ms-3' variant="outlined" color="error">
-            Remove
-          </Button>
+        <div className="row bg-white p-3 p-md-5 rounded-4 shadow-lg">
+          <div className='d-flex justify-content-between align-items-center mb-5'>
+            <h4 className=''>Student Details</h4>
+            <Button variant='' className='h-100' onClick={()=> updateStudentData(Student)}>
+              <i style={{color: 'pink'}} className='w-100' class="fa-regular fa-pen-to-square"></i>
+            </Button>
+           
+          </div>
+         
+          <Row className='mx-auto'>
+            <Col lg="4">
+              <div style={{width: '270px', height: '270px'}} className='rounded-circle overflow-hidden mb-4'>
+                <img className='w-100 h-100' style={{objectFit: 'cover', objectPosition: 'center'}} src={Student.url} alt=""/>
+              </div>
 
+              <p className='title'>Name</p>
+              <p className='details'>{Student.name}</p>
+            </Col>
+
+            <Col lg="4" className=''>
+              <p className='title'>Group/Class</p>
+              <p className='details'>{Student.group}</p>
+              
+              <p className='title'>RollNo</p>
+              <p className='details'>{Student.rollno}</p>
+
+              <p className='title'>Gender</p>
+              <p className='details'>{Student.gender}</p>
+
+              <p className='title'>Email</p>
+              <p className='details'>{Student.email}</p>
+
+              <p className='title'>Phone Number</p>
+              <p className='details'>{Student.phonenumber}</p>
+            </Col>
+
+            <Col lg="4" className=''>
+              <p className='title'>Address</p>
+              <p className='details'>{Student.address}</p>
+
+              <p className='title'>City</p>
+              <p className='details'>{Student.city}</p>
+
+              <p className='title'>State</p>
+              <p className='details'>{Student.state}</p>
+
+              <p className='title'>Place</p>
+              <p className='details'>{Student.place}</p>
+            </Col>
+          </Row>
         </div>
-
       </div>
-
     </>
   )
 }

@@ -5,8 +5,7 @@ import './component.css'
 
 function Header() {
   return (
-    <div className=''>
-      {/* <h1 style={{backgroundColor:'#6366F1'}}>Header</h1> */}
+    <React.Fragment>
         <Navbar className="header">
         <Container>
           <Navbar.Brand href="#home" style={{fontSize:'1.5rem', color:'white'}}>
@@ -29,7 +28,7 @@ function Header() {
         </Container>
       </Navbar>
       
-    </div>
+    </React.Fragment>
   )
 }
 

@@ -27,7 +27,6 @@
     --slate-gray: hsla(220, 16%, 48%, 1);
 
     --gradient-color: linear-gradient(45deg, #F8178Dff, #8025C6ff);
-
 }
 
 * {
@@ -48,3 +47,40 @@ a{
 body{
     background-color: var( --white) !important;
 }
+
+.hoverEffects{
+    cursor: pointer;
+}
+
+.hoverEffects:hover{
+    background-color: #f1f1f1 !important;
+}
+
+.hoverEffects:active{
+    background-color: #dfdede !important;
+}
+
+
+/* WebKit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Optional: Add hover styles for better user experience */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the scrollbar thumb on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #333; /* Color of the scrollbar thumb when clicked */
+}
+  

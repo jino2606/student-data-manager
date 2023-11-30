@@ -1,28 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Navbar from './Navbar'
+import Navbar from './Navigationbar'
 import { ReactComponent as Logo } from '../logo.svg';
 import './sidebar.css';
 import { Link } from 'react-router-dom'
-
-import { styled, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/MailOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -67,21 +63,24 @@ padding: theme.spacing(0, 1),
 
 const AppBar = styled(MuiAppBar, {
 shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-			
-		width: `calc(100% - ${changedWidth}px)`,
-		// zIndex: theme.zIndex.drawer + 1,
-		transition: theme.transitions.create(['width', 'margin'], {
+})(({ theme, open, isMobile }) => ({
+	width: isMobile ? '100%' : `calc(100% - ${changedWidth}px)`,
+	// width: `calc(100% - ${changedWidth}px)`,
+	// zIndex: theme.zIndex.drawer + 1,
+	transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
 }),
 ...(open && {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+	width: isMobile ? '100%' : `calc(100% - ${drawerWidth}px)`,
+    // width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
+	
     }),
+	
 }),
 }));
 
@@ -103,8 +102,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 }),
 );
 
-function Sidebar({ children }) {
-	const theme = useTheme();
+function Sidebar({ children, component }) {
+
 	const [open, setOpen] = React.useState(true);
 
 	const handleDrawerOpen = () => {
@@ -128,20 +127,38 @@ function Sidebar({ children }) {
 		'Group Management': '/groups',
 		};
 
+	/* For temporary and permanent drawer */
+	const [isPermanent, setIsPermanent] = useState(true)
+
+	const changeDrawerVariant = (e)=>{
+		setIsPermanent(!isPermanent)
+		// e.preventDefault();
+	}
+	const theme = useTheme();
+	// Add the following lines to use useMediaQuery hook
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+	useEffect(()=>{
+		isMobile?setIsPermanent(false):setIsPermanent(true)
+	},[isMobile])
+
+
   return (
         <>
 			<Box sx={{ display: 'flex' }}>
-			<CssBaseline />
-			<Drawer variant="permanent" position="relative" open={open} 
-			 classes={{ paper: 'drawerPaper' }}>
+			{/* <CssBaseline /> */}
+			<AppBar position="fixed" open={open} sx={{boxShadow:'none'}} isMobile={isMobile && !isPermanent? true :false}>
 
-				<AppBar position="fixed" open={open} sx={{background:'white', boxShadow:'none'}}>
-					<Toolbar>
+					{/* Adding Our custom Nav bar */}
+					<Navbar component={component} drawerType={isPermanent} setIsPermanent={setIsPermanent} isMobile={isMobile} />
 
-						{/* Adding Our custom Nav bar */}
-						<Navbar />
-					</Toolbar>
-				</AppBar>
+			</AppBar>
+
+			{/* Use a conditional statement to decide whether to render a permanent or temporary drawer */}
+		<Drawer variant={ isPermanent?'permanent':'temporary' } position="relative" open={open} 
+			classes={{ paper: 'drawerPaper' }}
+			>
+				{/* {drawer} */}
 
 				<DrawerHeader className='drawer_header'>
 					<Link to={'/'}>
@@ -166,20 +183,20 @@ function Sidebar({ children }) {
 					<Box sx={{paddingX: '20px', marginBottom: '10px', marginTop: '10px'}}>
 						<Typography sx={{display: open ? 'block' : 'none', textAlign: 'center', fontSize: '25px'}} className='dwawer_text'>Pages</Typography>
 						<IconButton
-						color="inherit"
-						aria-label="open drawer"
-						onClick={handleDrawerOpen}
-						sx={{
+							color="inherit"
+							aria-label="open drawer"
+							onClick={handleDrawerOpen}
+							sx={{
 
-							padding: 0,
-							'&.MuiIconButton-root': {
-							  },
-							...(open && { display: 'none' }),
-						}}
-						className="custom-icon-color"
-						>	
-						<MenuIcon />
-					</IconButton>
+								padding: 0,
+								'&.MuiIconButton-root': {
+								},
+								...(open && { display: 'none' }),
+							}}
+							className="custom-icon-color"
+							>	
+							<MenuIcon />
+						</IconButton>
 					</Box>
 					
 					{['Home', 'Add Students', 'Group Management'].map((text, index) => (
@@ -213,43 +230,21 @@ function Sidebar({ children }) {
 					))}
 				</List>
 				<Divider />
-				{/* <List>
-					{['All mail', 'Trash', 'Spam'].map((text, index) => (
-						<ListItem key={text} disablePadding sx={{ display: 'block' }}>
-							<ListItemButton
-								sx={{
-									minHeight: 48,
-									justifyContent: open ? 'initial' : 'center',
-									px: 2.5,
-								}}
-							>
-								<ListItemIcon
-									sx={{
-										minWidth: 0,
-										mr: open ? 3 : 'auto',
-										justifyContent: 'center',
-									}}
-								>
-									{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-								</ListItemIcon>
-								<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-							</ListItemButton>
-						</ListItem>
-					))}
-				</List> */}
 			</Drawer>
+
 			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 				<DrawerHeader />
 
-				
 				{/* Render children */}
 				{children}
 			</Box>
-
 		</Box>
-
-        </>
+    </>
   )
 }
+
+// Sidebar.propTypes = {
+// 	window: PropTypes.func,
+//   };
 
 export default Sidebar
